@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&display=swap');
+
 h1 {
+    /* Applies the font from Google Fonts that is linked from the HTML */
     font-family: "Archivo Narrow", sans-serif;
+}
+header p {
+    /* Targets the paragraph inside the header, not the main */
 }
