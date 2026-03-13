@@ -93,9 +93,29 @@
 			}
 
 			/* STEP 7a: Build out the styles for the pullquote, adding the class="pullquote2" to the SPAN element in the HTML to see how the styles look */
-
+			.pullquote2 {
+				display: block;
+				float: right;
+				padding-left: 20px;
+				margin: 0 1rem 0.5rem 1rem;
+				width: 35%;
+				font-size: 1.2rem;
+				font-weight: bold;
+				line-height: 1.5;
+				text-align: right;
+				color: #CCC;
+				border-left: 3px solid #CCC;
+			}
 			/* STEP 7b: Add leading quotation marks and style them */
-
+			.pullquote2::before {
+				content: "\201C";
+				display: block;
+				font-size: 120px;
+				float: left;
+				position: relative;
+				top: -3rem;
+				color: #CCC;
+			}
 			/* STEP 7c: Remove the class"pullquote2" from the HTML */
 			footer {
 				background: #ccc;
@@ -162,7 +182,7 @@
 
 					<p>Take kindly the counsel of the years, gracefully surrendering the things of youth. Nurture strength of spirit to shield you in sudden misfortune. But do not distress yourself with dark imaginings. Many fears are born of fatigue and loneliness. Beyond a wholesome discipline, be gentle with yourself.</p>
 
-					<p>You are a child of the universe, no less than the trees and the stars; you have a right to be here. And whether or not it is clear to you, no doubt the universe is unfolding as it should.</p>
+					<p><span class="pullquote">You are a child of the universe, no less than the trees and the stars; you have a right to be here.</span> And whether or not it is clear to you, no doubt the universe is unfolding as it should.</p>
 
 					<p>Therefore be at peace with God, whatever you conceive Him to be, and whatever your labors and aspirations, in the noisy confusion of life keep peace with your soul.</p>
 
@@ -187,7 +207,7 @@
 		// STEP 4a: Get the 'Back to top' button from the DOM with a const topButton
 		const topButton = document.querySelector("footer a.top");
 		// STEP 8a: Assign any and all elements with the class="pullquote" to the const pullQuote
-		
+		const pullQuote = document.querySelectorAll(".pullquote");
 		// STEP 2c: Build an event listener for the scroll event (https://developer.mozilla.org/en-US/docs/Web/Events/scroll)
 		window.addEventListener("scroll", function() {
 			// console.log("Page has been scrolled!");
@@ -222,16 +242,17 @@
 				});
 			}
 			// STEP 8b: Write a forEach loop to duplicate the pullquote text and insert it into the page
-			
+			pullQuote.forEach(function(element) {
 				// STEP 8c: Get the parent element
-				
+				const parentElem = element.parentNode;
 				// STEP 8d: Clone the element (https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode)
-				
+				let clone = element.cloneNode(true);
 				// STEP 8e: Add a special class to the cloned SPAN element
-				
+				clone.classList.add("pullquote2");
+				// console.log(clone);
 				// STEP 8f: Insert cloned element into the DOM
-				
-			
+				parentElem.prepend(clone);
+			});
 			// STEP 9a: Move this entire JavaScript into an external file and put it into the /js folder
 			/* Animated scrolling of page to top function inspired by the great tutorial at https://dzone.com/articles/back-to-top-pure-javascript and the MDN page about scrollBy() at https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy */
 		</script>
