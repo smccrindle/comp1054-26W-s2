@@ -1,14 +1,21 @@
-// STEP 6: Nab all the SUMMARY elements
+// STEP 6: Nab all the DETAILS elements
+const details = document.querySelectorAll("details");
 
+// STEP 7a: Loop through the element array
+details.forEach((targetDetail) => {
+  // STEP 7b: Add an event listener for the toggle event
+  targetDetail.addEventListener("toggle", () => {
+    // STEP 8a: Check to see if this is the detail element that was just opened
+    if (targetDetail.open) {
+		// STEP 8b: Now close all the other detail elements
+		details.forEach((detail) => {
+        if (detail !== targetDetail) {
+          detail.open = false;
+        }
+      });
+    }
+  });
+});
+// STEP 9: Verify that this works in the browser
 
-// STEP 7: Loop through the element array to add an event listener, and reference a function called closeOpenDetails
-
-
-// STEP 8a: Create the closeOpenDetails() function
-
-	// STEP 8b: Loop through the summaries array again
-
-		// STEp 8c: Check to make sure the DETAILS element is not the parent of the SUMMARY that was clicked 
-
-
-// STEP 9: Check in the browser to make sure there are no errors - use the console, then proceed to the CSS for the final step
+// This experiment based on https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
